@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="utf-8"> 
-    <title>GRACE Orbit Simulation</title>
-    <meta name="author" content="Arthur Pachachura with Naoki Ellis">
+    <meta charset="utf-8">
+    <title>Multivariable Calculus: Flux Simulation</title>
+    <meta name="author" content="Arthur Pachachura">
     <meta name="ROBOTS" content="INDEX, FOLLOW">
     <meta name="Keywords" content="NASA, UTCSR, GRACE">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Gravity Recovery and Climate Experiment Orbit Simulation">
-    
+    <meta name="description" content="Multivariable Calculus: Flux Simulation">
+
     <!--  Load External Javascript -->
     <script type="text/javascript" src="js/include/ThreeWebGL.js"></script>
     <script type="text/javascript" src="js/include/ThreeExtras.js"></script>
@@ -19,32 +19,32 @@
     <script type="text/javascript" src="js/include/three.min.js"></script>
     <script type="text/javascript" src="js/include/dat.gui.min.js"></script>
   </head>
-  
+
   <!--  Load CSS -->
   <link href="css/include/bootstrap.min.css" rel="stylesheet">
   <link href="fonts/fonts.css" rel="stylesheet">
   <link href="css/main.css" rel="stylesheet">
-  
+
   <!--  BODY  -->
   <body>
-    
+
     <!--  datGUI Container  -->
     <div id="gui-container"></div>
-    
+
     <!--  2D GUI Items  -->
-    <div id="title">Gravity Recovery and Climate Experiment</div>
-    <div id="subtitle">Orbit and Groundtrack Simulation</div>
-    <div id="copyright">Copyright (c) 2014 Arthur Pachachura and Naoki Ellis<br>In cooperation with NASA JSC and UT CSR</div>
+    <div id="title">Multivariable Calculus</div>
+    <div id="subtitle">Flux Simulation</div>
+    <div id="copyright">Copyright (c) 2016 Arthur Pachachura.<br>Licensed under MIT.</div>
 
     <div id="fsbutton" href="" onClick="fullscreen();"><span class="mega-octicon octicon-screen-full fadeicon"></span></div>
     <a id="togithub" href="https://github.com/smo-key/grace"><span class="mega-octicon octicon-mark-github fadeicon"></span></a>
     <div id="runbutton" href="" onClick="startSimul();"><span class="mega-octicon octicon-playback-pause fadeicon"></span></div>
     <div id="resetbutton" href="" onClick="resetSimul();"><span class="mega-octicon octicon-history fadeicon"></span></div>
-    
+
     <div class="timerlabel" id="timer">T+ 00:00:00:00</div>
     <div class="timetype" id="timeutc" style="bottom: 3px; left: 113px;">UTC</div>
     <div class="timetype fadeicon" id="timesidereal" onClick="changeDateFormat();" style="bottom: 3px; left: 140px;">Solar Day (switch)</div>
-    
+
     <!--  3D Rendering  -->
     <div id="container"></div>
     <canvas id="maincanvas" width="720" height="360" style="display: none; background-color: transparent"></canvas>
@@ -60,9 +60,9 @@
     <div class="sattext" id="sattexte" style="color: #00ffeb;">GRACE E</div>
     <div class="satcircle" id="satcirclef" style="background-color: #f5ff00;"></div>
     <div class="sattext" id="sattextf" style="color: #f5ff00;">GRACE F</div>
-    
+
 <!--    <script type="text/javascript" src="js/include/globe.js"></script>-->
-    
+
     <script type="text/javascript" src="js/include/jquery.min.js"></script>
     <script type="text/javascript" src="js/include/TinyTrackballControls.js"></script>
 <!--    <script type="text/javascript" src="js/include/bootstrap.min.js"></script>-->
@@ -70,10 +70,10 @@
     <script type="text/javascript" src="js/planets.js"></script>
     <script type="text/javascript" src="js/orbit.js"></script>
     <script type="text/javascript" src="js/utils.js"></script>
-    
+
   </body>
-  
+
   <!-- DELAYED LOADING -->
   <script type="text/javascript" src="js/simul.js"></script>
-  
+
 </html>
