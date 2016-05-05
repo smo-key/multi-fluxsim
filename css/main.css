@@ -120,6 +120,25 @@ input {
   padding: 6px;
 }
 
+/* Function Overlay */
+div#titlebox {
+  background-color: #1A237E;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 62px;
+}
+div#databox {
+  background-color: #0D47A1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 240px;
+}
+
 /* Fullscreen Button */
 #fsbutton {
   color: #fff;
@@ -183,7 +202,7 @@ input {
 .fadeicon {
   color: rgba(255, 255, 255, 0.6);
   cursor: pointer;
-  
+
   -webkit-transition: color 0.1s ease-in-out;
   -moz-transition: color 0.1s ease-in-out;
   -ms-transition: color 0.1s ease-in-out;
