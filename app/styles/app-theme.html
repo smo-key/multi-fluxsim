@@ -26,10 +26,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   /* Application theme */
 
   :root {
-    --primary-text-color: var(--paper-grey-900);
+    --primary-text-color: var(--paper-grey-100);
     --primary-background-color: #ffffff;
-    --secondary-text-color: #737373;
-    --disabled-text-color: #9b9b9b;
+    --secondary-text-color: var(--paper-grey-200);
+    --disabled-text-color: var(--paper-grey-400);
     --divider-color: #dbdbdb;
     --primary-color: var(--paper-indigo-500);
     --light-primary-color: var(--paper-indigo-100);
@@ -37,8 +37,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     --accent-color: var(--paper-pink-a200);
     --light-accent-color: var(--paper-pink-a100);
     --dark-accent-color: var(--paper-pink-a400);
-
-    /* Components */
 
     /* paper-drawer-panel */
     --drawer-menu-color: #ffffff;
@@ -48,6 +46,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     /* paper-menu */
     --paper-menu-background-color: #fff;
     --menu-link-color: #111111;
+
+    /* paper-input */
+    --paper-input-container-color: var(--paper-indigo-200);
+    --paper-input-container-focus-color: var(--paper-grey-200);
+    --paper-input-container-input-color: var(--paper-grey-300);
+    --paper-input-container: { margin-bottom: 12px; font-size: 26px };
+    --paper-input-container-input: { margin-bottom: 6px; font-size: 26px };
+    --paper-input-container-underline: { margin-bottom: 0px; position: relative };
+    --paper-input-container-label: { margin-bottom: 12px; font-size: 20px;
+    color: var(--secondary-text-color)!important; }
   }
 
   /* General styles */
@@ -106,8 +114,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     padding: 0 16px;
   }
 
+
   #mainToolbar.tall .app-name {
-    font-size: 40px;
+    font-size: 22px;
     font-weight: 300;
     /* Required for main area's paper-scroll-header-panel custom condensing transformation */
     -webkit-transform-origin: left center;
