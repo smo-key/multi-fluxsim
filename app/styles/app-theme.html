@@ -47,18 +47,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     --paper-menu-background-color: #fff;
     --menu-link-color: #111111;
 
+    /* paper-toolbar */
+    --paper-toolbar-tall: { display: block; position: static;}
+
+    /* paper-radio-buttom */
+    --paper-radio-button-checked-color: var(--paper-grey-50);
+    --paper-radio-button-checked-ink-color: var(--paper-grey-200);
+
+    /* paper-header-panel */
+    --paper-header-panel: { background-color: var(--paper-indigo-500) };
+
     /* paper-input */
     --paper-input-container-color: var(--paper-indigo-200);
     --paper-input-container-focus-color: var(--paper-grey-200);
     --paper-input-container-input-color: var(--paper-grey-300);
-    --paper-input-container: { margin-bottom: 12px; font-size: 26px };
+    --paper-input-container: { margin-top: -20px; margin-bottom: 12px; font-size: 26px };
     --paper-input-container-input: { margin-bottom: 6px; font-size: 26px };
     --paper-input-container-underline: { margin-bottom: 0px; position: relative };
     --paper-input-container-label: { margin-bottom: 12px; font-size: 20px;
     color: var(--secondary-text-color)!important; }
-  }
 
-  /* General styles */
+}
 
   body {
     @apply(--layout-fullbleed);

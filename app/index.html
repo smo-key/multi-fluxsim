@@ -75,15 +75,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script type="text/javascript" src="../bower_components/MathJax/MathJax.js"></script>
   <script>
   MathJax.Hub.Queue(function () {
-    var math = MathJax.Hub.getAllJax("math1")[0];
+    var math1 = MathJax.Hub.getAllJax("math1")[0];
+    var math2 = MathJax.Hub.getAllJax("math2")[0];
     MathJax.Hub.Queue(function() {
       $(".MathJax .math").css("color", "#fff");
+      //$("paper-input-container input").css("display","none");
     });
   });
 </script>
 </head>
 
-<body unresolved>
+<body unresolved class="fullbleed layout vertical">
   <!-- build:remove -->
   <span id="browser-sync-binding"></span>
   <!-- endbuild -->
@@ -91,10 +93,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <template is="dom-bind" id="app">
 
     <!-- Main Area -->
-    <paper-header-panel main id="headerPanelMain">
+    <paper-header-panel mode="cover">
       <!-- Main Toolbar -->
-      <paper-toolbar id="mainToolbar" class="medium-tall">
+      <!-- <paper-toolbar id="mainToolbar">
         <div class="app-name">Multivariable Calculus - Flux Simulation</div>
+      </paper-toolbar> -->
+      <!-- <div class="header"> -->
         <!-- <span class="space"></span> -->
 
         <!-- Toolbar icons -->
@@ -102,28 +106,66 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <!-- <paper-icon-button icon="search"></paper-icon-button> -->
 
         <!-- Application sub title -->
-        <div class="bottom" style="width:50%">
-          <!-- <span style="text-align:center;font-size:24px" class="premath" id="math1">
-            `vec Phi(u,v)=u^2v`
-          </span> -->
-          <paper-input label="`vec Phi(u,v)` Parameterized Surface">`u^2v`</paper-input>
-          <!-- <div class="bottom-title">The future of the web today</div> -->
-        </div>
-        <div class="bottom" style="width:50%">
-          <span style="text-align:center;font-size:24px" class="premath" id="math2">
-            `vec F(x,y,z)=x^2+2x+4`
-          </span>
-          <!-- <div class="bottom-title">The future of the web today</div> -->
-        </div>
+        <!-- <br> -->
+        <!-- <div class="sizer"> -->
+          <div class="pos" style="width:49%">
+            <!-- <span style="text-align:center;font-size:24px" class="premath" id="math1">
+              `vec Phi(u,v)=u^2v`
+            </span> -->
+            <br>
+            <!-- <div class="surf-selector">
+              <paper-radio-group selected="surf-param">
+                <paper-radio-button name="surf-param">Create surface from parameterization</paper-radio-button>
+                <paper-radio-button name="surf-func">Enter parameterization</paper-radio-button>
+              </paper-radio-group>
+            </div><br>
+            <div class="surf-func">
+              `S` Surface Function<br>
+              <span style="font-size: 26px;">
+              `z(x,y) = ` <paper-input style="max-width:90%;display:inline-block"></paper-input>
+              </span>
+              <paper-radio-group selected="surf-param">
+                <paper-radio-button name="x">x</paper-radio-button>
+                <paper-radio-button name="y">y</paper-radio-button>
+                <paper-radio-button name="z">z</paper-radio-button>
+
+              </paper-radio-group>
+            </div> -->
+            <div class="surf-param">
+              `vec Phi(u,v)` Parameterized Surface<br>
+              <span style="font-size: 26px">
+              (<paper-input placeholder="x(u,v)" style="width:30%;display:inline-block"></paper-input>,
+              <paper-input placeholder="y(u,v)" style="width:30%;display:inline-block"></paper-input>,
+              <paper-input placeholder="z(u,v)" style="width:30%;display:inline-block"></paper-input>)
+              </span>
+            </div>
+            Enter either the surface function or a function's parameterization.
 
 
-      </paper-toolbar>
+
+
+            <!-- <paper-input label="`vec Phi(u,v)` Parameterized Surface"></paper-input> -->
+            <!-- <div class="bottom-title">The future of the web today</div> -->
+          </div>
+          <div class="pos" style="width:2%"></div>
+          <div class="pos" style="width:49%;right:16px;left:51%">
+            <!-- <span style="text-align:center;font-size:24px" class="premath" id="math2">
+              `vec F(x,y,z)=x^2+2x+4`
+            </span> -->
+            <paper-input label="`vec F(x,y,z)` Vector Field">`u^2v`</paper-input>
+
+            <!-- <div class="bottom-title">The future of the web today</div> -->
+          </div>
+        <!-- </div> -->
+
+
+      <!-- </div> -->
 
       <!-- Main Content -->
       <div class="content">
 
       </div>
-    </paper-scroll-header-panel>
+    </paper-header-panel>
 
   </template>
 
