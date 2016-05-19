@@ -1,16 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-  
+
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="utf-8"> 
-    <title>GRACE</title>
-    <meta name="author" content="Arthur Pachachura with Naoki Ellis">
+    <meta charset="utf-8">
+    <title>Multivariable Calculus: Flux Simulation</title>
+    <meta name="author" content="Arthur Pachachura">
     <meta name="ROBOTS" content="INDEX, FOLLOW">
     <meta name="Keywords" content="NASA, UTCSR, GRACE">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Gravity Recovery and Climate Experiment">
-    <meta http-equiv="refresh" content="0; url=simul.html" />   
+    <meta name="description" content="Multivariable Calculus: Flux Simulation">
+
+    <!--  Load External Javascript -->
+    <script type="text/javascript" src="js/include/ThreeWebGL.js"></script>
+    <script type="text/javascript" src="js/include/ThreeExtras.js"></script>
+    <script type="text/javascript" src="js/include/RequestAnimationFrame.js"></script>
+    <script type="text/javascript" src="js/include/Detector.js"></script>
+    <script type="text/javascript" src="js/include/three.min.js"></script>
+    <script type="text/javascript" src="js/include/dat.gui.min.js"></script>
+
+    <!--[if IE]><script type="text/javascript" src="javascript/excanvas.js"></script><![endif]-->
+		<script type="text/javascript" src='js/SurfacePlot.js'></script>
+		<script type="text/javascript" src='js/ColourGradient.js'></script>
+		<script type="text/javascript" src="js/jsapi.js"></script>
   </head>
-  
+
+  <!--  Load CSS -->
+  <link href="css/include/bootstrap.min.css" rel="stylesheet">
+  <link href="fonts/fonts.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+
+  <!--  BODY  -->
+  <body>
+
+    <!--  datGUI Container  -->
+    <!-- <div id="gui-container"></div> -->
+
+    <!--  2D GUI Items  -->
+    <div id="title">Multivariable Calculus</div>
+    <div id="subtitle">Flux Simulation</div>
+    <div id="copyright">Copyright (c) 2016 Arthur Pachachura.<br>Licensed under MIT.</div>
+
+    <div id="fsbutton" href="" onClick="fullscreen();"><span class="mega-octicon octicon-screen-full fadeicon"></span></div>
+    <a id="togithub" href="https://github.com/smo-key/multi-fluxsim"><span class="mega-octicon octicon-mark-github fadeicon"></span></a>
+    <!-- <div id="runbutton" href="" onClick="startSimul();"><span class="mega-octicon octicon-playback-pause fadeicon"></span></div> -->
+    <!-- <div id="resetbutton" href="" onClick="resetSimul();"><span class="mega-octicon octicon-history fadeicon"></span></div> -->
+
+    <!-- Equation box -->
+    <div id="titlebox"></div>
+    <div id="databox"></div>
+
+    <!--  3D Rendering  -->
+    <!-- <div id="container"></div> -->
+    <!-- <canvas id="maincanvas" width="720" height="360" style="display: none; background-color: transparent"></canvas> -->
+    <!-- <div class="satcircle" id="satcirclea" style="background-color: #0044ff;"></div>
+    <div class="sattext" id="sattexta" style="color: #0044ff;">GRACE A</div>
+    <div class="satcircle" id="satcircleb" style="background-color: #0aff00;"></div>
+    <div class="sattext" id="sattextb" style="color: #0aff00;">GRACE B</div>
+    <div class="satcircle" id="satcirclec" style="background-color: #f00;"></div>
+    <div class="sattext" id="sattextc" style="color: #f00;">GRACE C</div>
+    <div class="satcircle" id="satcircled" style="background-color: #ff00eb;"></div>
+    <div class="sattext" id="sattextd" style="color: #ff00eb;">GRACE D</div>
+    <div class="satcircle" id="satcirclee" style="background-color: #00ffeb;"></div>
+    <div class="sattext" id="sattexte" style="color: #00ffeb;">GRACE E</div>
+    <div class="satcircle" id="satcirclef" style="background-color: #f5ff00;"></div>
+    <div class="sattext" id="sattextf" style="color: #f5ff00;">GRACE F</div> -->
+
+    <script type='text/javascript'>
+			google.load("visualization", "1");
+			google.setOnLoadCallback(setUp);
+
+			function setUp()
+			{
+				var numRows = 45;
+				var numCols = 45;
+
+				var tooltipStrings = new Array();
+				var data = new google.visualization.DataTable();
+
+				for (var i = 0; i < numCols; i++)
+				{
+	        	data.addColumn('number', 'col'+i);
+				}
+
+        data.addRows(numRows);
+				var d = 360 / numRows;
+				var idx = 0;
+
+				for (var i = 0; i < numRows; i++)
+				{
+					for (var j = 0; j < numCols; j++)
+					{
+						var value = (Math.cos(i * d * Math.PI / 180.0) * Math.cos(j * d * Math.PI / 180.0) + Math.sin(i * d * Math.PI / 180.0));
+						// var value = (Math.cos(i * d * Math.PI / 180.0) * Math.cos(j * d * Math.PI / 180.0));
+						//var value = (Math.sin(i * d * Math.PI / 180.0) * Math.cos(j * d * Math.PI / 180.0)) * 1.5;
+
+						data.setValue(i, j, value / 4.0);
+
+						tooltipStrings[idx] = "x:" + i + ", y:" + j + " = " + value;
+						idx++;
+					}
+				}
+
+				var surfacePlot = new greg.ross.visualisation.SurfacePlot(document.getElementById("surfacePlotDiv"));
+
+				// Don't fill polygons in IE. It's too slow.
+				var fillPly = true;
+
+				// Define a colour gradient.
+        var color1 = {red:0, green:0, blue:128};
+				var color2 = {red:0, green:0, blue:255};
+        var color3 = {red:128, green:128, blue:255};
+				var colors = [color1, color2, color3];
+
+				// Axis labels.
+				var xAxisHeader	= "x";
+				var yAxisHeader	= "y";
+				var zAxisHeader	= "z";
+
+				var options = {xPos: 300, yPos: 50, width: 500, height: 500, colourGradient: colors, fillPolygons: fillPly,
+					tooltips: tooltipStrings, xTitle: xAxisHeader, yTitle: yAxisHeader, zTitle: zAxisHeader, restrictXRotation: false};
+
+				surfacePlot.draw(data, options);
+			}
+
+		</script>
+
+		<div id='surfacePlotDiv'>
+			<!-- SurfacePlot goes here... -->
+
+    <script type="text/javascript" src="js/include/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="js/include/TinyTrackballControls.js"></script> -->
+    <!-- <script type="text/javascript" src="js/bins.js"></script> -->
+    <!-- <script type="text/javascript" src="js/planets.js"></script> -->
+    <!-- <script type="text/javascript" src="js/orbit.js"></script> -->
+    <script type="text/javascript" src="js/utils.js"></script>
+
+  </body>
+
+  <!-- DELAYED LOADING -->
+  <script type="text/javascript" src="js/simul.js"></script>
+
 </html>
