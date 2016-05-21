@@ -23,6 +23,7 @@
 		<script type="text/javascript" src='js/SurfacePlot.js'></script>
 		<script type="text/javascript" src='js/ColourGradient.js'></script>
 		<script type="text/javascript" src="js/jsapi.js"></script>
+    <script src="bower_components/mathjs/dist/math.min.js" type="text/javascript"></script>
   </head>
 
   <!--  Load CSS -->
@@ -66,7 +67,7 @@
     <div class="satcircle" id="satcirclef" style="background-color: #f5ff00;"></div>
     <div class="sattext" id="sattextf" style="color: #f5ff00;">GRACE F</div> -->
 
-    <script type='text/javascript'>
+    <!-- <script type='text/javascript'>
 			google.load("visualization", "1");
 			google.setOnLoadCallback(setUp);
 
@@ -80,7 +81,7 @@
 
 				for (var i = 0; i < numCols; i++)
 				{
-	        	data.addColumn('number', 'col'+i);
+        	data.addColumn('number', 'col'+i);
 				}
 
         data.addRows(numRows);
@@ -124,10 +125,12 @@
 				surfacePlot.draw(data, options);
 			}
 
-		</script>
+		</script> -->
 
-		<div id='surfacePlotDiv'>
+		<!-- <div id='surfacePlotDiv'> -->
 			<!-- SurfacePlot goes here... -->
+
+    <div id="surfacePlotDiv"></div>
 
     <script type="text/javascript" src="js/include/jquery.min.js"></script>
     <!-- <script type="text/javascript" src="js/include/TinyTrackballControls.js"></script> -->

@@ -46,17 +46,18 @@ function fsupdateicon()
 }
 
 //*** RESIZE CANVAS ***//
-function resizeCanvas() {
-  //camera.aspect = window.innerWidth / window.innerHeight;
-  //camera.updateProjectionMatrix();
-
-  
-
-  //renderer.setSize(window.innerWidth, window.innerHeight);
-
-  fsupdateicon();
-}
-window.addEventListener('resize', resizeCanvas);
+// function resizeCanvas() {
+//   //camera.aspect = window.innerWidth / window.innerHeight;
+//   //camera.updateProjectionMatrix();
+//
+//   var canvas = $('.surfacePlotCanvas')[0].getContext("2d").canvas;
+//   canvas.width = window.innerWidth;
+//   canvas.height = window.innerHeight;
+//   //renderer.setSize(window.innerWidth, window.innerHeight);
+//
+//   fsupdateicon();
+// }
+// window.addEventListener('resize', resizeCanvas);
 
 //*** READING KEYBOARD ***//
 /*document.addEventListener('keydown', onDocumentKeyDown, false);

@@ -96,8 +96,8 @@ greg.ross.visualisation.JSSurfacePlot = function(x, y, width, height, colourGrad
     var currentXAngle = greg.ross.visualisation.JSSurfacePlot.DEFAULT_X_ANGLE;
 
     this.data = null;
-	var canvas_support_checked = false;
-	var canvas_supported = true;
+  	var canvas_support_checked = false;
+  	var canvas_supported = true;
     var data3ds = null;
     var displayValues = null;
     var numXPoints;
@@ -125,6 +125,13 @@ greg.ross.visualisation.JSSurfacePlot = function(x, y, width, height, colourGrad
     var yAxisTitleLabel = new greg.ross.visualisation.Tooltip(true);
     var zAxisTitleLabel = new greg.ross.visualisation.Tooltip(true);
     var tTip = new greg.ross.visualisation.Tooltip(false);
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      redraw(data);
+    }
+    window.addEventListener('resize', resize);
 
     function init(){
         transformation = new greg.ross.visualisation.Th3dtran();
