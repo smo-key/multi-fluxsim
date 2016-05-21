@@ -1,0 +1,32 @@
+{
+  "name": "multi-fluxsim",
+  "homepage": "https://github.com/smo-key/multi-fluxsim",
+  "authors": [
+    "Arthur Pachachura <pachachura.arthur@gmail.com>"
+  ],
+  "description": "Multivariable Calculus Flux Simulation",
+  "main": "simul.html",
+  "keywords": [
+    "Flux",
+    "Multivariable",
+    "Calculus",
+    "Simulation",
+    "Integration"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.4.0",
+    "mathjs": "^3.2.1",
+    "mathbox": "^0.0.5",
+    "three.js": "threejs#*",
+    "bootstrap": "^3.3.6"
+  }
+}
